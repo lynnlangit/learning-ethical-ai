@@ -16,3 +16,6 @@ Resources to learn how to implement ethical AI using machine learning.  Mostly f
 - Pair Explorables, Measuring Diversity example -[link](https://pair.withgoogle.com/explorables/measuring-diversity/)
 - Pair Explorables, Hidden Bias example - [link](https://pair.withgoogle.com/explorables/hidden-bias/)
 - Using MinDiff to do model remediation for TensorFlow - [link](https://www.tensorflow.org/responsible_ai/model_remediation)
+- Google's 'What If' tool for model understanding, faces examples - [link](https://pair-code.github.io/what-if-tool/demos/image.html) - example image shown below.
+
+<img src="xxx" width=800>

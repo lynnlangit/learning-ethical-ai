@@ -5,9 +5,11 @@ Resources to learn how to implement ethical AI using machine learning.  Mostly f
 - Book: "Weapons of Math Destruction" by Cathy O'Neil - [link](https://www.penguinrandomhouse.com/books/241363/weapons-of-math-destruction-by-cathy-oneil/)
 - Google's "People + AI Patterns" Guidebook - [link](https://pair.withgoogle.com/guidebook/patterns/how-do-i-get-started)
 - Google's "Responsible AI Practices" - [link](https://ai.google/responsibilities/responsible-ai-practices/)
+- AWS "Fairness and Explanability in AI" - [link](https://pages.awscloud.com/rs/112-TZM-766/images/Amazon.AI.Fairness.and.Explainability.Whitepaper.pdf)
 
 ## Talks / Videos
 - Talk: "Weapons of Math Destruction" by Cathy O'Neil in 2016 / 58 min.- [link](https://www.youtube.com/watch?v=TQHs8SA1qpk)
+- Presentation: "Fairness and Explanability in Machine Learning" by AWS in 2021/ 27 min. - [link](https://www.youtube.com/watch?v=EBQOaqhsnqM&t=3s)
 
 ## Tools for Data
 - Google's Responsible AI - tools and practices - [link](https://www.tensorflow.org/responsible_ai)

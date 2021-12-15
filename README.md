@@ -9,7 +9,7 @@ Resources to learn how to implement ethical AI using machine learning.  Mostly f
 
 ## Talks / Videos
 - Talk: "Weapons of Math Destruction" by Cathy O'Neil in 2016 / 58 min.- [link](https://www.youtube.com/watch?v=TQHs8SA1qpk)
-- Presentation: "Fairness and Explanability in Machine Learning" by AWS in 2021/ 27 min. - [link](https://www.youtube.com/watch?v=EBQOaqhsnqM&t=3s)
+- Presentation: "Fairness and Explanability in Machine Learning" by AWS (shows SageMaker Clarify tool) in 2021/ 27 min. - [link](https://www.youtube.com/watch?v=EBQOaqhsnqM&t=3s)
 
 ## Tools for Data
 - Google's Responsible AI - tools and practices - [link](https://www.tensorflow.org/responsible_ai)

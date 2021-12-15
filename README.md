@@ -7,9 +7,11 @@ Listed below - also see the academic papers in `/papers` folder of this repo.
 
 - Book: "Weapons of Math Destruction" by Cathy O'Neil - [link](https://www.penguinrandomhouse.com/books/241363/weapons-of-math-destruction-by-cathy-oneil/)
 - Book: "Hello World - How to be human in the age of the machine" by Hannah Fry - [link](https://hannahfry.co.uk/book/hello-world/)
+- Papers: Collection of Timnit Gebrus published papers - [link](https://paperswithcode.com/search?q=author%3ATimnit+Gebru)
+
+## Guidance / Best Practices
 - Google's "People + AI Patterns" Guidebook - [link](https://pair.withgoogle.com/guidebook/patterns/how-do-i-get-started)
 - Google's "Responsible AI Practices" - [link](https://ai.google/responsibilities/responsible-ai-practices/)
-- Papers: Collection of Timnit Gebrus published papers - [link](https://paperswithcode.com/search?q=author%3ATimnit+Gebru)
 - AWS "Fairness and Explanability in AI" - [link](https://pages.awscloud.com/rs/112-TZM-766/images/Amazon.AI.Fairness.and.Explainability.Whitepaper.pdf)
 
 ## Talks / Videos

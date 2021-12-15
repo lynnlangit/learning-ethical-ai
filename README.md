@@ -29,6 +29,7 @@ Google has an extensive set of tools to evaluate bias in data used in models for
 
 - 🔍 Google's Responsible AI - tools and practices - [link](https://www.tensorflow.org/responsible_ai)
 - 🔍 Data Card example - [link](https://research.google/static/documents/datasets/crowdsourced-high-quality-colombian-spanish-es-co-multi-speaker-speech-dataset.pdf)
+- ✏️ Datasheet Template - [link](https://github.com/lynnlangit/learning-ethical-ai/blob/main/datasheet-template/Datasheets_Template.pdf)
 - 🔍 Know Your Data tool example (celebrity faces) -[link](https://knowyourdata-tfds.withgoogle.com/#tab=STATS&dataset=celeb_a)
 - 🔍 TensorFlow Data Validation tools (skew, drift, more...) - [link](https://www.tensorflow.org/tfx/guide/tfdv)
 - 🔍 Pair Explorables, Measuring Diversity example -[link](https://pair.withgoogle.com/explorables/measuring-diversity/)

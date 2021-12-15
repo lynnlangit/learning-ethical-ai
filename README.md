@@ -36,13 +36,13 @@ Google has an extensive set of tools to evaluate bias in data used in models for
 - 🔍 Pair Explorables, Hidden Bias example - [link](https://pair.withgoogle.com/explorables/hidden-bias/)
 
 ## Tools for Models
-Google's model evaluation tools center around models built with TensorFlow.
+Google's model evaluation tools center around models built with TensorFlow.  Other vendors also support open source tools for model evaluation and more.
 
 - 🔎 Using MinDiff to do model remediation for TensorFlow - [link](https://www.tensorflow.org/responsible_ai/model_remediation)
 - 🔎 Model Card tool (provides context and transparency into a model's development and performance)- [link](https://www.tensorflow.org/responsible_ai/model_card_toolkit/guide)
 - 🔎 Example Model Card for face detection - [link](https://modelcards.withgoogle.com/face-detection)
 - :octocat: Open Source library 'InterpretML' to explain blackbox systems - [link](https://github.com/interpretml/interpret#supported-techniques)
-- :octocat: Open Source 'responsible AI toolkit' - [link](https://github.com/microsoft/responsible-ai-toolbox)
+- :octocat: Open Source 'responsible AI toolbox' (from Microsoft) - [link](https://github.com/microsoft/responsible-ai-toolbox)
 - 🔎 Google's 'What If' tool for model understanding, faces examples - [link](https://pair-code.github.io/what-if-tool/demos/image.html) - example image shown below.
 
 <img src="https://github.com/lynnlangit/learning-ethical-ai/blob/main/images/what-if-tool.png" width=800>

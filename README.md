@@ -42,6 +42,7 @@ Google's model evaluation tools center around models built with TensorFlow.
 - 🔎 Model Card tool (provides context and transparency into a model's development and performance)- [link](https://www.tensorflow.org/responsible_ai/model_card_toolkit/guide)
 - 🔎 Example Model Card for face detection - [link](https://modelcards.withgoogle.com/face-detection)
 - :octocat: Open Source library 'InterpretML' to explain blackbox systems - [link](https://github.com/interpretml/interpret#supported-techniques)
+- :octocat: Open Source 'responsible AI toolkit' - [link](https://github.com/microsoft/responsible-ai-toolbox)
 - 🔎 Google's 'What If' tool for model understanding, faces examples - [link](https://pair-code.github.io/what-if-tool/demos/image.html) - example image shown below.
 
 <img src="https://github.com/lynnlangit/learning-ethical-ai/blob/main/images/what-if-tool.png" width=800>

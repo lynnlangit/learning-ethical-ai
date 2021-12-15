@@ -18,4 +18,4 @@ Resources to learn how to implement ethical AI using machine learning.  Mostly f
 - Using MinDiff to do model remediation for TensorFlow - [link](https://www.tensorflow.org/responsible_ai/model_remediation)
 - Google's 'What If' tool for model understanding, faces examples - [link](https://pair-code.github.io/what-if-tool/demos/image.html) - example image shown below.
 
-<img src="xxx" width=800>
+<img src="https://github.com/lynnlangit/learning-ethical-ai/tree/main/images" width=800>

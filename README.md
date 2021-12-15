@@ -3,7 +3,7 @@ Resources to learn how to implement ethical AI using machine learning.  Mostly f
 
 ## Book / Papers / Guidance
 
-Listed below - also see academic papers in '/papers' folder of this repo.  
+Listed below - also see the academic papers in `/papers` folder of this repo.  
 
 - Book: "Weapons of Math Destruction" by Cathy O'Neil - [link](https://www.penguinrandomhouse.com/books/241363/weapons-of-math-destruction-by-cathy-oneil/)
 - Google's "People + AI Patterns" Guidebook - [link](https://pair.withgoogle.com/guidebook/patterns/how-do-i-get-started)

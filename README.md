@@ -8,7 +8,7 @@ Listed below - also see the academic papers in `/papers` folder of this repo.
 - 📖 Book: "The Alignment Problem: Machine Learning and Human Values" by Brian Christian- [link](https://brianchristian.org/the-alignment-problem/)
 - 📖 Book: "Invisible Women" by Caroline Perez - [link](https://www.abramsbooks.com/product/invisible-women_9781419735219/)
 - 📖 Book: "Hello World - How to be human in the age of the machine" by Hannah Fry - [link](https://hannahfry.co.uk/book/hello-world/)
-- 📚 Papers: Collection of Timnit Gebrus published papers - [link](https://paperswithcode.com/search?q=author%3ATimnit+Gebru)
+- 📚 Papers: Collection of Timnit Gebru's published papers - [link](https://paperswithcode.com/search?q=author%3ATimnit+Gebru)
 
 ## Guidance / Best Practices
 Most major cloud vendors provide guidance and best practices for implementing ethical AI.  I am most familiar with Google's guidance.

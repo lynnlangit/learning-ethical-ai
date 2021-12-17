@@ -1,6 +1,11 @@
 # Learning Ethical AI
 Resources to learn how to implement ethical AI using machine learning.  Mostly focuses on neural networks.  Includes books, papers, talks, videos and tools.
 
+## Overview
+
+What is Ethical AI (good overview) images from this linked website --> https://devopedia.org/ethical-ai
+- Related paper by Ajitesh Kumar --> https://dzone.com/articles/ethical-ai-lessons-from-google-ai-principles
+
 ## Book / Papers 
 Listed below - also see the academic papers in `/papers` folder of this repo.  
 

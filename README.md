@@ -31,6 +31,16 @@ Authors of the books and papers listed above have also given talks on the focus 
 - 🗣️ Talk: "How I am fighting bias in AI" by Joy Buolamwini in 2017 / 9 min. - [link](https://www.youtube.com/watch?v=UG_X_7g63rY)
 - 🗣️ Presentation: "Fairness and Explanability in Machine Learning" by AWS (shows SageMaker Clarify tool) in 2021/ 27 min. - [link](https://www.youtube.com/watch?v=EBQOaqhsnqM&t=3s)
 
+## Groups / Open AI
+ML Collective was born from Deep Collective, a research group founded by Jason Yosinski and Rosanne Liu at Uber AI Labs in 2017. 
+- They that group to foster open research collaboration and free sharing of ideas, and in 2020 we moved the group outside Uber and renamed it to MLC. 
+- Over the years they have aimed to build a culture of open, cross-institutional research collaboration among researchers of diverse and non-traditional backgrounds. 
+- Their weekly paper reading group, `Deep Learning: Classics and Trends`, has been running since 2018 and is open to the whole community.   
+
+ML Collective includes a 'Lab'. At the Lab, experienced researchers looking to dedicate time to mentor projects and give advice to starters should consider joining the lab, with a light commitment of joining our regular research meetings where research updates are presented.
+
+- More info about ML Collective Lab --> https://mlcollective.org/community/#lab
+
 ## Tools for Data
 Google has an extensive set of tools to evaluate bias in data used in models for AI.  Many tools focus on data that will be used in TensorFlow models.
 

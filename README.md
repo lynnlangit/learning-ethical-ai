@@ -11,11 +11,24 @@ What is Ethical AI (good overview) images shown above from this website --> http
 ## Book / Papers 
 Listed below - also see the academic papers in `/papers` folder of this repo.  
 
+### Algorithms
+
 - 📖 Book: "Weapons of Math Destruction" by Cathy O'Neil - [link](https://www.penguinrandomhouse.com/books/241363/weapons-of-math-destruction-by-cathy-oneil/)
 - 📖 Book: "The Alignment Problem: Machine Learning and Human Values" by Brian Christian- [link](https://brianchristian.org/the-alignment-problem/)
-- 📖 Book: "Invisible Women" by Caroline Perez - [link](https://www.abramsbooks.com/product/invisible-women_9781419735219/)
+(https://us.macmillan.com/books/9781250134769/theaddressbook)
+
+### Cognition
 - 📖 Book: "Hello World - How to be human in the age of the machine" by Hannah Fry - [link](https://hannahfry.co.uk/book/hello-world/)
+- 📖 Book: "Calling Bullshit - The Art of Skepticism in a Data-Driven World" by by Bergstrom/West - [link](https://www.callingbullshit.org/)
+- 📖 Book: "Black and White Thinking: The Burden of a Binary Brain in a Complex World" by Kevin Dutton - [link](https://us.macmillan.com/books/9780374110345/blackandwhitethinking)
+- 📖 Book: "Raising Heretics - Teaching Kids to Change the World" by Dr. Linda McIver - [link](https://adsei.org/raising-heretics-how-data-science-education-can-change-the-world/)
+
+### Bias
+- 📖 Book: "Invisible Women" by Caroline Perez - [link](https://www.abramsbooks.com/product/invisible-women_9781419735219/)
+- 📖 Book: "The Address Book: What Street Addresses Reveal About Identity, Race, Wealth, and Power by Deirdre Mask - [link]
 - 📚 Papers: Collection of Timnit Gebru's published papers - [link](https://paperswithcode.com/search?q=author%3ATimnit+Gebru)
+
+---
 
 ## Guidance / Best Practices
 Most major cloud vendors provide guidance and best practices for implementing ethical AI.  I am most familiar with Google's guidance.

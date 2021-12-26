@@ -9,7 +9,9 @@ What is Ethical AI (good overview) images shown above from this website --> http
 - Related paper by Ajitesh Kumar --> https://dzone.com/articles/ethical-ai-lessons-from-google-ai-principles
 
 ## Book / Papers 
-Listed below - also see the academic papers in `/papers` folder of this repo.  
+Listed (and some shown) below - also see the academic papers in `/papers` folder of this repo.  
+
+<img src="https://github.com/lynnlangit/learning-ethical-ai/blob/main/images/ethical-ai-books.jpg" width=400 align=left>
 
 ### Algorithms
 

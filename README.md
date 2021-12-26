@@ -5,7 +5,7 @@ Resources to learn how to implement ethical AI using machine learning.  Mostly f
 
 <img src="https://github.com/lynnlangit/learning-ethical-ai/blob/main/images/ethical-ai.png" width=800>
 
-What is Ethical AI (good overview) images shown above from this linked website --> https://devopedia.org/ethical-ai
+What is Ethical AI (good overview) images shown above from this website --> https://devopedia.org/ethical-ai
 - Related paper by Ajitesh Kumar --> https://dzone.com/articles/ethical-ai-lessons-from-google-ai-principles
 
 ## Book / Papers 

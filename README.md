@@ -27,7 +27,8 @@ Listed (and some shown) below - also see the academic papers in `/papers` folder
 
 ### Bias
 - 📖 Book: "Invisible Women" by Caroline Perez - [link](https://www.abramsbooks.com/product/invisible-women_9781419735219/)
-- 📖 Book: "The Address Book: What Street Addresses Reveal About Identity, Race, Wealth, and Power by Deirdre Mask - [link]
+- 📖 Book: "The Address Book: What Street Addresses Reveal About Identity, Race, Wealth, and Power" by Deirdre Mask - [link](https://www.goodreads.com/book/show/45046690-the-address-book)
+- 📖 Book: "Practical Fairness: Achieving Fair and Secure Data Models" by Aileen Nielsen - [link](https://books.google.com/books/about/Practical_Fairness.html?id=aNlazQEACAAJ)
 - 📚 Papers: Collection of Timnit Gebru's published papers - [link](https://paperswithcode.com/search?q=author%3ATimnit+Gebru)
 
 ---

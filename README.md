@@ -46,6 +46,7 @@ Authors of the books and papers listed above have also given talks on the focus 
 - 🗣️ Talk: "Weapons of Math Destruction" by Cathy O'Neil in 2016 / 58 min.- [link](https://www.youtube.com/watch?v=TQHs8SA1qpk)
 - 🗣️ Talk: "How I am fighting bias in AI" by Joy Buolamwini in 2017 / 9 min. - [link](https://www.youtube.com/watch?v=UG_X_7g63rY)
 - 🗣️ Presentation: "Fairness and Explanability in Machine Learning" by AWS (shows SageMaker Clarify tool) in 2021/ 27 min. - [link](https://www.youtube.com/watch?v=EBQOaqhsnqM&t=3s)
+- 🎥 Documentary: "The Social Dilemma on Netflix in 2020 / 1 hour 30 - [link](https://www.thesocialdilemma.com/)
 
 ## Groups / Open AI
 ML Collective was born from Deep Collective, a research group founded by Jason Yosinski and Rosanne Liu at Uber AI Labs in 2017. 

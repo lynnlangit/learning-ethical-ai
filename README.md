@@ -1,5 +1,11 @@
 # Learning Ethical AI
-Resources to learn how to implement ethical AI using machine learning.  Mostly focuses on neural networks.  Includes books, papers, talks, videos and tools.
+
+- In this repo are resources to learn how to implement ethical AI using machine learning.  
+- This repo mostly focuses on neural networks, it includes books, papers, talks, videos and tools  
+- Also, a major source of abuse is personal data harvesting.  
+  - The non-profit `Center for Humane Technology` was founded by ex-tech engineers to find ethical ways forward
+  - They also have a list of actionable steps you can do to reduce this practice --> https://www.humanetech.com/take-control
+
 
 ## Overview
 

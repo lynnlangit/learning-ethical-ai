@@ -7,15 +7,14 @@ async def fizz_buzz_for_number(number):
     is_divisible_by_3 = number % 3 == 0
     is_divisible_by_5 = number % 5 == 0
 
-    match (is_divisible_by_3, is_divisible_by_5):
-        case (True, True):
-            return "FizzBuzz"
-        case (True, False):
-            return "Fizz"
-        case (False, True):
-            return "Buzz"
-        case _:
-            return str(number)
+    if is_divisible_by_3 and is_divisible_by_5:
+        return "FizzBuzz"
+    elif is_divisible_by_3:
+        return "Fizz"
+    elif is_divisible_by_5:
+        return "Buzz"
+    else:
+        return str(number)
 
 async def async_fizz_buzz(range_start, range_end):
     tasks = [fizz_buzz_for_number(number) for number in range(range_start, range_end + 1)]

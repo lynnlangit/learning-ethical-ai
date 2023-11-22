@@ -1,4 +1,5 @@
 # requires python3.10 or better
+
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 def fizz_buzz_for_number(number):

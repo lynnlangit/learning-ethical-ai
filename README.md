@@ -46,6 +46,7 @@ Most major cloud vendors provide guidance and best practices for implementing et
 - ✨ Google's "People + AI Patterns" Guidebook - [link](https://pair.withgoogle.com/guidebook/patterns/how-do-i-get-started)
 - ✨ Google's "Responsible AI Practices" - [link](https://ai.google/responsibilities/responsible-ai-practices/)
 - ✨ AWS "Fairness and Explanability in AI" - [link](https://pages.awscloud.com/rs/112-TZM-766/images/Amazon.AI.Fairness.and.Explainability.Whitepaper.pdf)
+- ✨ Azure "Responsible AI" - [link](https://learn.microsoft.com/en-us/azure/ai-services/responsible-use-of-ai-overview)
 
 #### In Healthcare
 - 📚 Site: Coalition for Health AI (CHAI) - [link](https://www.coalitionforhealthai.org/insights)

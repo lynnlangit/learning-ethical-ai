@@ -1,5 +1,14 @@
 # 📜 2024-2025 Research Summaries (TL;DR)
 
+Research highlights summarized.  
+
+| Category | Key Paper (2025) | Critical Takeaway |
+| --- | --- | --- |
+| **Regulation** | EU AI Act | High-risk AI needs a third-party audit. |
+| **Safety** | DeepMind CCLs | Monitor for "Autonomy" and "Manipulation" signals. |
+| **Bio-Ethics** | WHO LMM Health | Beware of "Automation Bias" in clinical tools. |
+| **Industry State** | Stanford AI Index | Performance is soaring, but bias remains unresolved. |
+
 ### 1. [Stanford AI Index Report 2025](https://hai.stanford.edu/ai-index/2025-ai-index-report)
 
 * **The Gist:** The 2025 report documents a **56% surge** in AI-related privacy and security incidents. It highlights a massive "trust deficit," where businesses acknowledge AI risks (bias, misinformation) but rarely implement concrete mitigation strategies.
@@ -27,14 +36,6 @@
 
 ---
 
-### Final Repository Housekeeping
 
-To finish this update, I recommend adding a **"Research Highlights"** table to the top of your `/papers` folder:
 
-| Category | Key Paper (2025) | Critical Takeaway |
-| --- | --- | --- |
-| **Regulation** | EU AI Act | High-risk AI needs a third-party audit. |
-| **Safety** | DeepMind CCLs | Monitor for "Autonomy" and "Manipulation" signals. |
-| **Bio-Ethics** | WHO LMM Health | Beware of "Automation Bias" in clinical tools. |
-| **Industry State** | Stanford AI Index | Performance is soaring, but bias remains unresolved. |
 

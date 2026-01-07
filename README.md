@@ -86,4 +86,4 @@ Modern alternatives to classical fairness tools, focusing on **Red Teaming** and
 
 ---
 
-**Next Step:** Would you like me to generate a specific Python script that you can add to your repo as a "Hands-On" example, showing how to implement these 2026 safety filters using the Google Gen AI SDK?
+

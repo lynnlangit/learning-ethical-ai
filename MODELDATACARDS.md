@@ -127,6 +127,3 @@ if __name__ == "__main__":
 * **[NIST AI RMF Playbook (2025)](https://www.nist.gov/itl/ai-risk-management-framework/nist-ai-rmf-playbook):** Practical suggestions for achieving the "Measure" and "Manage" functions.
 
 ---
-
-
-Would you like me to create a **Python script** that automatically generates a skeleton `MODELDATACARD.md` for a user based on a series of interactive terminal prompts?

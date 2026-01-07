@@ -68,13 +68,4 @@ if __name__ == "__main__":
 
 ```
 
-### Why this is a quality improvement for your repo:
 
-* **Consistency:** It prevents different contributors from formatting their cards differently.
-* **Compliance-First:** By specifically asking for the **EU AI Act Risk Tier**, it forces the developer to think about legal requirements before they write a single line of code.
-* **Self-Documentation:** It aligns with the "Ethics-as-Code" movement where documentation is treated as part of the software development lifecycle.
-
-
-[Learn to build an AI Agent from scratch](https://www.youtube.com/watch?v=bTMPwUgLZf0)
-
-This video provides a step-by-step guide to building an AI agent from scratch in Python, which is a key technical component for the agentic systems you are documenting in your repository.

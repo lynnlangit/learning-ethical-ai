@@ -1,7 +1,7 @@
 # Learning Ethical AI
 
 
-This guide pivots from "Classical ML Fairness" (detecting bias in tables) to **Generative and Agentic Ethics** (securing autonomous reasoning and healthcare deployments).
+This guide pivots from ["Classical ML Fairness" (detecting bias in tables)](https://github.com/lynnlangit/learning-ethical-ai/blob/main/Background.md) to **Generative and Agentic Ethics** (securing autonomous reasoning and healthcare deployments).
 
 ---
 

@@ -445,8 +445,8 @@ Before deploying any clinical LLM:
 - [FDA SaMD Guidance](https://www.fda.gov/medical-devices/software-medical-device-samd)
 
 ### Testing & Tools
-- [Giskard Healthcare Testing](../01-tools/giskard/)
-- [Clinical Guardrails](../01-tools/nemo-guardrails/healthcare_rails/)
+- [Giskard Healthcare Testing](../01-tools/01-giskard/)
+- [Clinical Guardrails](../01-tools/02-nemo-guardrails/healthcare_rails/)
 - [Safety Notebooks](../02-examples/)
 
 ### Genomics-Specific

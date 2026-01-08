@@ -462,8 +462,8 @@ def monitored_safety_check(prompt: str):
 ## Healthcare-Specific Resources
 
 - Medical Misinformation Detection: `04-healthcare/clinical-llm-risks.md`
-- Combining with Guardrails: `01-tools/nemo-guardrails/`
-- Comprehensive Testing: `01-tools/giskard/`
+- Combining with Guardrails: `01-tools/02-nemo-guardrails/`
+- Comprehensive Testing: `01-tools/01-giskard/`
 
 ---
 

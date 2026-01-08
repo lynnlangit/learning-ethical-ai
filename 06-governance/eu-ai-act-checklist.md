@@ -33,7 +33,7 @@ Practical checklist for healthcare AI systems under the European Union's AI Act.
 
 #### 3. Technical Documentation
 - [ ] Detailed system description
-- [ ] Model Card (see `../01-tools/model-cards/`)
+- [ ] Model Card (see `../01-tools/03-model-cards/`)
 - [ ] Training methodology documented
 - [ ] Performance metrics (overall + subgroups)
 
@@ -105,7 +105,7 @@ Practical checklist for healthcare AI systems under the European Union's AI Act.
 **For Healthcare High-Risk AI**:
 1. Conduct risk assessment
 2. Test for bias across demographics
-3. Create Model Card (see `../01-tools/model-cards/`)
+3. Create Model Card (see `../01-tools/03-model-cards/`)
 4. Implement human oversight (see `../05-agentic-safety/human-in-loop-agents.md`)
 5. Enable audit logging (see `../05-agentic-safety/audit-logging-agents.md`)
 6. Schedule third-party audit
@@ -113,4 +113,4 @@ Practical checklist for healthcare AI systems under the European Union's AI Act.
 ## Resources
 - [EU AI Act Full Text](https://artificialintelligenceact.eu/)
 - [WHO LMM Guidelines](../04-healthcare/who-lmm-guidelines.md) - Aligned with EU AI Act
-- [Model Cards Toolkit](../01-tools/model-cards/) - Required documentation
+- [Model Cards Toolkit](../01-tools/03-model-cards/) - Required documentation

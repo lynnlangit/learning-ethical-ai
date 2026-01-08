@@ -27,14 +27,14 @@ Summary of NIST's risk framework for generative AI systems (NIST AI 600-1, July 
 - RAG with authoritative sources
 - Confidence scoring
 - Citation verification
-- See `../01-tools/giskard/` for hallucination testing
+- See `../01-tools/01-giskard/` for hallucination testing
 
 ### 3. Dangerous or Violent Recommendations
 **Risk**: LLMs suggest harmful actions (self-harm, violence)
 
 **Mitigation**:
-- Safety classifiers (Llama Guard - see `../01-tools/llama-guard/`)
-- Input/output filtering (NeMo Guardrails - see `../01-tools/nemo-guardrails/`)
+- Safety classifiers (Llama Guard - see `../01-tools/04-llama-guard/`)
+- Input/output filtering (NeMo Guardrails - see `../01-tools/02-nemo-guardrails/`)
 
 ### 4. Data Privacy
 **Risk**: LLMs leak training data containing PII/PHI
@@ -76,8 +76,8 @@ Summary of NIST's risk framework for generative AI systems (NIST AI 600-1, July 
 
 **Mitigation**:
 - Input validation
-- Guardrails (see `../01-tools/nemo-guardrails/`)
-- Security testing (see `../01-tools/giskard/`)
+- Guardrails (see `../01-tools/02-nemo-guardrails/`)
+- Security testing (see `../01-tools/01-giskard/`)
 
 ### 9. Intellectual Property
 **Risk**: LLMs reproduce copyrighted content

@@ -26,22 +26,22 @@ export GCP_REGION="us-central1"
 ## Getting Started Paths
 
 ### Path 1: Safety Testing (Beginners)
-1. Start with **Giskard** → `giskard/README.md`
+1. Start with **Giskard** → `01-giskard/README.md`
 2. Run the healthcare scan example
 3. Review results and interpret safety scores
 
 ### Path 2: Production Guardrails (Intermediate)
-1. Learn **NeMo Guardrails** basics → `nemo-guardrails/README.md`
+1. Learn **NeMo Guardrails** basics → `02-nemo-guardrails/README.md`
 2. Deploy the healthcare rails example
 3. Customize rails for your use case
 
 ### Path 3: Compliance & Documentation (All Levels)
-1. Use **Model Cards Toolkit** → `model-cards/README.md`
+1. Use **Model Cards Toolkit** → `03-model-cards/README.md`
 2. Generate model cards for existing models
 3. Integrate into CI/CD pipeline
 
 ### Path 4: Content Moderation (Intermediate)
-1. Deploy **Llama Guard** → `llama-guard/README.md`
+1. Deploy **Llama Guard** → `04-llama-guard/README.md`
 2. Test with healthcare-specific taxonomy
 3. Combine with Giskard for comprehensive testing
 
@@ -73,30 +73,30 @@ export GCP_REGION="us-central1"
 
 ## Tool Deep Dives
 
-### [Giskard](./giskard/) - LLM Testing & Vulnerability Scanning
+### [Giskard](./01-giskard/) - LLM Testing & Vulnerability Scanning
 - **What**: Automated testing framework for LLMs and ML models
 - **Why**: Detect hallucinations, biases, and safety vulnerabilities before deployment
 - **Healthcare Strengths**: Clinical context understanding, HIPAA-aware testing scenarios
 - **GCP Integration**: Native Vertex AI support via `giskard.llm.VertexAIClient`
 
-**Working Example**: `giskard/healthcare_scan.py` - Complete healthcare LLM safety audit
+**Working Example**: `01-giskard/healthcare_scan.py` - Complete healthcare LLM safety audit
 
-### [NeMo Guardrails](./nemo-guardrails/) - Runtime Safety Controls
+### [NeMo Guardrails](./02-nemo-guardrails/) - Runtime Safety Controls
 - **What**: NVIDIA's framework for controlling LLM behavior with programmable rails
 - **Why**: Enforce safety policies, prevent jailbreaks, control output boundaries
 - **Healthcare Strengths**: Clinical appropriateness checks, PII prevention, scope limiting
 - **Language**: Colang (declarative safety rules)
 
-**Working Example**: `nemo-guardrails/healthcare_rails/` - Production-ready clinical guardrails
+**Working Example**: `02-nemo-guardrails/healthcare_rails/` - Production-ready clinical guardrails
 
-### [Model Cards Toolkit](./model-cards/) - Model Documentation
+### [Model Cards Toolkit](./03-model-cards/) - Model Documentation
 - **What**: Google's framework for structured model documentation
 - **Why**: Regulatory compliance, transparency, bias disclosure
 - **Healthcare Strengths**: Maps to FDA guidance, supports clinical validation docs
 
 **Working Example**: Linked in README - Gemini model card generation
 
-### [Llama Guard](./llama-guard/) - Content Safety Classification
+### [Llama Guard](./04-llama-guard/) - Content Safety Classification
 - **What**: Meta's safety classifier for prompt/response filtering
 - **Why**: Fast content moderation, multi-category risk detection
 - **Healthcare Strengths**: Customizable taxonomy for medical misinformation
@@ -117,7 +117,7 @@ mct = ModelCardToolkit()
 mct.update_model_card_json(test_results=report)
 
 # 3. Deploy with Guardrails
-# (See nemo-guardrails/healthcare_rails/)
+# (See 02-nemo-guardrails/healthcare_rails/)
 ```
 
 ### Pattern 2: Runtime Protection Stack

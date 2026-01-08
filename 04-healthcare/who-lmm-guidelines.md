@@ -101,7 +101,7 @@ Summary of the World Health Organization's guidance on deploying Large Multi-Mod
 - Performance metrics (overall and by demographic subgroups)
 - Known limitations and failure modes
 
-See `../01-tools/model-cards/` for implementation guide.
+See `../01-tools/03-model-cards/` for implementation guide.
 
 ### 4. Foster Accountability and Responsibility
 
@@ -246,7 +246,7 @@ LMM Alone: 88% cancer detection rate (❌ not sufficient to replace human)
 
 **Example Guardrails** (from WHO guidance):
 ```colang
-# Implement using NeMo Guardrails (see 01-tools/nemo-guardrails/)
+# Implement using NeMo Guardrails (see 01-tools/02-nemo-guardrails/)
 define user report emergency symptom
   "chest pain"
   "difficulty breathing"
@@ -339,9 +339,9 @@ See `../06-governance/` for detailed implementation of these frameworks.
 - [ ] **Sustainability**: Model update plan for new medical evidence
 
 **Tools to implement WHO guidance**:
-- Pre-deployment testing: `../01-tools/giskard/` (safety scanning)
-- Runtime safety: `../01-tools/nemo-guardrails/` (clinical guardrails)
-- Documentation: `../01-tools/model-cards/` (transparency)
+- Pre-deployment testing: `../01-tools/01-giskard/` (safety scanning)
+- Runtime safety: `../01-tools/02-nemo-guardrails/` (clinical guardrails)
+- Documentation: `../01-tools/03-model-cards/` (transparency)
 - Compliance: `./hipaa-ai-checklist.md` (privacy), `../06-governance/` (regulation)
 
 ## Resources

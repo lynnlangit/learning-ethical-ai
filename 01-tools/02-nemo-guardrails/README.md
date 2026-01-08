@@ -386,7 +386,7 @@ rails = LLMRails(config)
 
 1. **Deploy Example**: Run `healthcare_rails/` to see guardrails in action
 2. **Customize Rules**: Edit `rails.co` for your specific use case
-3. **Combine with Giskard**: Test with Giskard (`../giskard/`), deploy with Guardrails
+3. **Combine with Giskard**: Test with Giskard (`../01-giskard/`), deploy with Guardrails
 4. **Review Notebooks**: Check `02-examples/04-clinical-guardrails.ipynb` for advanced patterns
 5. **Learn Compliance**: See `04-healthcare/hipaa-ai-checklist.md` for regulatory context
 

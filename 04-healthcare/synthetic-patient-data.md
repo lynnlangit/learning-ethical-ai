@@ -479,7 +479,7 @@ metadata = {
 - [Membership Inference Attacks](https://arxiv.org/abs/1610.05820)
 
 ### Healthcare AI Testing
-- [Giskard Healthcare Testing](../01-tools/giskard/)
+- [Giskard Healthcare Testing](../01-tools/01-giskard/)
 - [HIPAA Compliance](./hipaa-ai-checklist.md)
 - [Clinical LLM Risks](./clinical-llm-risks.md)
 

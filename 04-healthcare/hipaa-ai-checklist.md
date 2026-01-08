@@ -387,8 +387,8 @@ If you're deploying an AI/LLM tool quickly, start with these essentials:
 ### Tools & Frameworks
 - [Google Cloud DLP API](https://cloud.google.com/dlp) - Automated PII/PHI detection
 - [Microsoft Presidio](https://github.com/microsoft/presidio) - Open-source PII anonymization
-- [NeMo Guardrails](../01-tools/nemo-guardrails/) - Runtime PII blocking
-- [Giskard Privacy Scanning](../01-tools/giskard/) - Test for data leakage
+- [NeMo Guardrails](../01-tools/02-nemo-guardrails/) - Runtime PII blocking
+- [Giskard Privacy Scanning](../01-tools/01-giskard/) - Test for data leakage
 
 ### Related Guides
 - [Clinical LLM Risks](./clinical-llm-risks.md) - Healthcare-specific AI risks

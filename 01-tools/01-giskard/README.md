@@ -267,7 +267,7 @@ scan(
 2. **Customize Tests**: Modify the script for your specific use case
 3. **Review Notebooks**: Check `02-examples/01-giskard-quickstart.ipynb` for detailed tutorial
 4. **Integrate Production**: Add Giskard scans to your CI/CD pipeline
-5. **Combine Tools**: Use with NeMo Guardrails for runtime protection (see `../nemo-guardrails/`)
+5. **Combine Tools**: Use with NeMo Guardrails for runtime protection (see `../02-nemo-guardrails/`)
 
 ## Resources
 

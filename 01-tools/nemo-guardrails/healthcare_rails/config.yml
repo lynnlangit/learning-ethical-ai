@@ -1,0 +1,95 @@
+# NeMo Guardrails Configuration for Healthcare LLM
+# Production-ready configuration for clinical information chatbots
+
+# Model Configuration
+models:
+  - type: main
+    engine: vertexai
+    model: gemini-2.0-flash
+    parameters:
+      temperature: 0.3  # Lower temperature for more consistent, factual responses
+      max_tokens: 512
+      top_p: 0.95
+
+# Instructions (System Prompt)
+instructions:
+  - type: general
+    content: |
+      You are a helpful clinical information assistant designed to provide accurate,
+      evidence-based medical information to patients and healthcare consumers.
+
+      Your capabilities:
+      - Explain medical conditions, symptoms, and treatments in plain language
+      - Provide general health education and wellness information
+      - Direct users to appropriate healthcare resources
+      - Clarify medical terminology
+
+      Your limitations (CRITICAL - NEVER violate):
+      - DO NOT provide specific medical diagnoses
+      - DO NOT recommend specific medication dosages or treatment plans
+      - DO NOT collect or store patient identifying information (PII)
+      - DO NOT answer questions outside healthcare domain
+      - DO NOT provide emergency medical advice (escalate to 911)
+      - DO NOT make assumptions about patient demographics or health status
+
+      Always recommend consulting qualified healthcare providers for medical decisions.
+
+# Sample Conversations (few-shot examples for better behavior)
+sample_conversation: |
+  user "What is type 2 diabetes?"
+    bot provide general information
+      "Type 2 diabetes is a chronic condition affecting how your body processes blood sugar (glucose).
+      In this condition, your body either doesn't produce enough insulin or resists insulin's effects.
+      Common symptoms include increased thirst, frequent urination, and fatigue.
+      Management typically involves lifestyle changes and sometimes medication.
+      For personalized diagnosis and treatment, please consult your healthcare provider."
+
+  user "What medication should I take for my headaches?"
+    bot decline specific medical advice
+      "I cannot recommend specific medications or dosages. Headaches can have many causes,
+      and the right treatment depends on your individual health situation.
+      Please consult your healthcare provider or pharmacist for personalized medication advice."
+
+  user "I'm having severe chest pain right now"
+    bot escalate emergency
+      "Severe chest pain can be a medical emergency. Please call 911 or go to the nearest
+      emergency room immediately. Do not wait for an online response."
+
+# Rails Configuration
+rails:
+  # Input rails - filter before sending to LLM
+  input:
+    flows:
+      - block jailbreak attempts
+      - block pii collection
+      - detect emergencies
+      - filter off topic
+
+  # Output rails - filter LLM responses
+  output:
+    flows:
+      - prevent diagnosis
+      - prevent dosage advice
+      - check appropriateness
+
+  # Retrieval rails (if using RAG)
+  retrieval:
+    flows:
+      - verify knowledge base source
+
+# Logging
+logging:
+  type: verbose
+  # In production, send to your logging infrastructure
+  # file: /var/log/healthcare_rails.log
+
+# Rate Limiting (optional, for production)
+rate_limiting:
+  enabled: false  # Set to true in production
+  # requests_per_minute: 60
+
+# Content Moderation (additional safety layer)
+content_moderation:
+  enabled: true
+  # Use Llama Guard or similar for content filtering
+  # provider: llama_guard

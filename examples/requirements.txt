@@ -1,0 +1,31 @@
+# Ethical AI Examples - Requirements
+# Python 3.10+ required
+
+# Core testing framework
+giskard[llm]>=2.15.0
+
+# LangChain for RAG examples
+langchain>=0.2.0
+langchain-community>=0.2.0
+langchain-google-vertexai>=1.0.0
+
+# Vector store
+faiss-cpu>=1.8.0
+
+# Google Cloud
+google-cloud-aiplatform>=1.60.0
+google-genai>=0.5.0
+
+# Guardrails (for notebook 04)
+nemoguardrails>=0.10.0
+
+# MCP SDK (for notebooks 05, 06)  
+mcp>=1.0.0
+
+# Data handling
+pandas>=2.0.0
+pydantic>=2.0.0
+
+# Jupyter
+jupyter>=1.0.0
+ipywidgets>=8.0.0

@@ -7,19 +7,11 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 [![GCP](https://img.shields.io/badge/Cloud-GCP%20Vertex%20AI-orange)](https://cloud.google.com/vertex-ai)
 
-This guide pivots from the original focus ["Classical ML Fairness" (detecting bias in tables)](https://github.com/lynnlangit/learning-ethical-ai/blob/main/Background.md) to a focus on **Generative and Agentic Ethics** (securing autonomous reasoning and healthcare deployments).
-
 ---
 
 ## 🛡️ Ethical AI: The 2026 Resource Guide
 
 This guide provides essential technical and regulatory updates for developers and AI practitioners building in the **Generative & Agentic Era (2024–2026)**.
-
-**Target Audience**: Developers, AI practitioners, healthcare technologists
-**Cloud Platform**: GCP / Vertex AI (Gemini 2.0 Flash)
-**Primary Tool**: Giskard (accessible, no Azure required)
-
----
 
 ## 📂 Repository Structure
 

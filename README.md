@@ -1,7 +1,8 @@
 # Learning Ethical AI
 
+<img src="https://github.com/lynnlangit/learning-ethical-ai/blob/main/images/ethical-ai-repo.jpeg" width=800>  
 
-This guide pivots from ["Classical ML Fairness" (detecting bias in tables)](https://github.com/lynnlangit/learning-ethical-ai/blob/main/Background.md) to **Generative and Agentic Ethics** (securing autonomous reasoning and healthcare deployments).
+This guide pivots from the orginial focus["Classical ML Fairness" (detecting bias in tables)](https://github.com/lynnlangit/learning-ethical-ai/blob/main/Background.md) to a focus on **Generative and Agentic Ethics** (securing autonomous reasoning and healthcare deployments).
 
 ---
 

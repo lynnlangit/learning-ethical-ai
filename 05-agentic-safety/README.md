@@ -9,6 +9,9 @@ With the rise of the **Model Context Protocol (MCP)** and multi-agent systems, "
 - **Reference Implementation**: [spatial-mcp](https://github.com/lynnlangit/spatial-mcp) - Secure geospatial MCP server
 - **Security Audit**: [../02-examples/05-mcp-security-audit.ipynb](../02-examples/05-mcp-security-audit.ipynb)
 
+## 🎮 Interactive Learning
+- **[MCP Threat Simulator](../07-visualizations/mcp-threat-sim.html)**: Try this interactive app to visualize "Tool Poisoning" and how guardrails block attacks.
+
 ## Human-in-the-Loop Best Practices
 
 - **HITL Patterns**: [human-in-loop-agents.md](human-in-loop-agents.md)

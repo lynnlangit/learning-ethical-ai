@@ -162,4 +162,5 @@ Mitigate identified risks
 ## Resources
 - [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework)
 - [NIST AI 600-1 (GenAI Profile)](https://www.nist.gov/itl/ai-risk-management-framework)
+- [NIST SP 800-53 Release 5.2.0](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) - August 2025 update with AI controls.
 - [Implementation Tools](../01-tools/) - Giskard, NeMo Guardrails

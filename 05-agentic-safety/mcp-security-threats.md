@@ -32,11 +32,12 @@ The **Model Context Protocol (MCP)** is an open protocol developed by Anthropic 
 └──────────────────────────────────────────────────────────┘
 ```
 
-## MCP Security Top 10 (2026)
+## MCP Security Top 12 (2026)
 
 ### MCP-01: Malicious Prompt Injection → Tool Abuse
 
 **Threat**: Attacker tricks AI into invoking dangerous MCP tools through crafted prompts.
+**New Variation (2025)**: **AI Evasion Techniques** - Attackers use sophisticated obfuscation to bypass standard safety filters (detected by Bugcrowd Red Teaming).
 
 **Example Attack**:
 ```
@@ -642,6 +643,19 @@ def read_file(filename: str):
     with open(requested_path, 'r') as f:
         return f.read()
 ```
+
+### MCP-11: Unchecked Agentic Response (CrowdStrike Insight)
+
+**Threat**: Automated response agents (e.g., security remediators) taking aggressive actions without human confirmation due to false positives.
+
+**Example**:
+- AI detects "malware" on critical server (false positive).
+- AI invokes `isolate_host()` tool immediately.
+- Production server goes offline, causing outage.
+
+**Mitigation**:
+- **Human-in-the-Loop (HITL)** for intrusive actions (quarantine, delete, block).
+- **Confidence Thresholds**: Require >99% confidence for autonomous action.
 
 ## MCP Security Checklist
 

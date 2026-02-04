@@ -22,6 +22,8 @@ export GCP_REGION="us-central1"
 | **NeMo Guardrails** | Runtime safety controls | Production guardrails, input/output filtering, topic control | ⭐⭐⭐ Medium | ✅ Strong |
 | **Model Cards Toolkit** | Model documentation & transparency | Compliance documentation, model governance | ⭐ Very Low | ✅ Good |
 | **Llama Guard** | Content moderation | Toxicity filtering, safety classification | ⭐⭐ Low | ⚠️ Limited |
+| **OpenAI Model Spec** | Behavioral guidelines | Defining intended model behavior | ⭐ Low | ⚠️ Limited |
+| **Wallarm for LLMs** | Security & defense | Protecting agents from prompt injection/jailbreaks | ⭐⭐ Low | ✅ Good |
 
 ## Getting Started Paths
 

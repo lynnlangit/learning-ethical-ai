@@ -2,7 +2,7 @@
 
 ![Ethical AI Repository](https://github.com/lynnlangit/learning-ethical-ai/blob/main/images/ethical-ai-repo.jpeg)
 
-[![Last Updated](https://img.shields.io/badge/Last%20Updated-January%202026-blue)](https://github.com/lynnlangit/learning-ethical-ai)
+[![Last Updated](https://img.shields.io/badge/Last%20Updated-February%202026-blue)](https://github.com/lynnlangit/learning-ethical-ai)
 [![Python](https://img.shields.io/badge/Python-3.11+-green)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 [![GCP](https://img.shields.io/badge/Cloud-GCP%20Vertex%20AI-orange)](https://cloud.google.com/vertex-ai)
@@ -12,6 +12,9 @@
 ## 🛡️ Ethical AI: The 2026 Resource Guide
 
 This guide provides essential technical and regulatory updates for developers and AI practitioners building in the **Generative & Agentic Era (2024–2026)**.
+
+> [!IMPORTANT]
+> **New for February 2026**: The [2026 International AI Safety Report](https://www.gov.uk/government/publications/international-scientific-report-on-the-safety-of-advanced-ai-interim-report) highlights rapid advancements in AI capabilities and the rising threat of deepfakes.
 
 ## 📂 Repository Structure
 
@@ -185,6 +188,8 @@ jupyter notebook
 | **NeMo Guardrails** | Runtime safety controls | Production guardrails, input/output filtering, topic control | ⭐⭐⭐ Medium | ✅ Strong | [Guide](01-tools/02-nemo-guardrails/README.md) |
 | **Model Cards Toolkit** | Model documentation & transparency | Compliance documentation, model governance | ⭐ Very Low | ✅ Good | [Guide](01-tools/03-model-cards/README.md) |
 | **Llama Guard** | Content moderation | Toxicity filtering, safety classification | ⭐⭐ Low | ⚠️ Limited | [Guide](01-tools/04-llama-guard/README.md) |
+| **OpenAI Model Spec** | Behavioral guidelines | Defining intended model behavior | ⭐ Low | ⚠️ Limited | [Spec](https://openai.com/index/model-spec/) |
+| **Wallarm for LLMs** | Security & defense | Protecting agents from prompt injection/jailbreaks | ⭐⭐ Low | ✅ Good | [Tool](https://www.wallarm.com/) |
 
 ---
 
@@ -295,6 +300,23 @@ MIT License - See [LICENSE](LICENSE) file for details
 - Background: Mayo Clinic / Genomics
 - Focus: Healthcare AI ethics, cloud architecture, precision medicine
 - GitHub: [@lynnlangit](https://github.com/lynnlangit)
+
+---
+
+## 💬 Chat with this Repo (NotebookLM)
+
+You can use Google's **NotebookLM** to turn this repository into an interactive expert that answers your questions.
+
+1.  Go to [NotebookLM](https://notebooklm.google.com/).
+2.  Create a new notebook.
+3.  Click **Add Source** > **GitHub** (or paste the repo URL: `https://github.com/lynnlangit/learning-ethical-ai`).
+4.  Select this repository.
+
+**Try asking:**
+- *"What are the new HIPAA requirements for AI?"*
+- *"Summarize the MCP security threats."*
+- *"Create a checklist for EU AI Act compliance."*
+- *"Listen to the Audio Overview for a podcast-style summary."*
 
 ---
 

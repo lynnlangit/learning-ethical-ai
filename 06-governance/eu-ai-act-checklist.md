@@ -7,6 +7,10 @@ Practical checklist for healthcare AI systems under the European Union's AI Act.
 **Status**: Entered into force August 2024, phased implementation through 2027
 **Scope**: AI systems placed on EU market or affecting EU persons
 
+## 📅 Key Dates (2025-2026)
+- **August 2025**: Obligations for General Purpose AI (GPAI) Models apply.
+- **February 2026**: Prohibitions on specific AI practices fully enforceable.
+
 ## AI Risk Classification
 
 ### High-Risk AI Systems (Annex III: Healthcare)
@@ -66,6 +70,16 @@ Practical checklist for healthcare AI systems under the European Union's AI Act.
 - [ ] CE marking obtained
 - [ ] EU Declaration of Conformity signed
 - [ ] Registered in EU AI database
+- [ ] Registered in EU AI database
+
+#### 9. General Purpose AI (GPAI) Models (Aug 2025)
+**If you provide a GPAI model (e.g., LLM base model):**
+- [ ] Maintain technical documentation.
+- [ ] Comply with EU Copyright Law.
+- [ ] Publish a detailed summary of training content.
+- [ ] **Systemic Risk?** (High compute): Conduct adversarial testing and report incidents.
+
+**Source**: [EU AI Act Obligations](https://artificialintelligenceact.eu/)
 
 ## Prohibited AI Practices (Article 5)
 

@@ -106,150 +106,17 @@ jupyter notebook
 
 ---
 
-## 🎓 Learning Paths
-
-### Path 1: AI Safety Beginner (Start Here!)
-
-**Goal**: Understand GenAI safety risks and run basic tests
-
-1. **Read**: `04-healthcare/clinical-llm-risks.md` - Understand healthcare AI risks
-2. **Practice**: `02-examples/01-giskard-quickstart.ipynb` - Run your first safety scan
-3. **Deploy**: `01-tools/01-giskard/healthcare_scan.py` - Audit a clinical LLM
-4. **Learn**: `01-tools/02-nemo-guardrails/README.md` - Understand runtime safety
-
-**Time**: 4-6 hours | **Prerequisites**: Basic Python, cloud familiarity
-
 ---
 
-### Path 2: Healthcare AI Developer (Clinical Focus)
+## 📚 Documentation Index
 
-**Goal**: Build HIPAA-compliant, safe healthcare AI systems
-
-1. **Compliance**: `04-healthcare/hipaa-ai-checklist.md` - HIPAA requirements
-2. **Testing**: `02-examples/03-healthcare-llm-safety.ipynb` - Healthcare-specific tests
-3. **Guardrails**: `02-examples/04-clinical-guardrails.ipynb` - Deploy clinical safety rails
-4. **Genomics**: `04-healthcare/genomics-ethics.md` - Genetic AI ethics (if applicable)
-5. **Governance**: `04-healthcare/who-lmm-guidelines.md` - WHO standards
-6. **Documentation**: `01-tools/03-model-cards/README.md` - Create compliant model cards
-
-**Time**: 12-16 hours | **Prerequisites**: Healthcare domain knowledge, Python
-
----
-
-### Path 3: Agentic AI Security Engineer (MCP Focus)
-
-**Goal**: Secure autonomous AI agents and MCP servers
-
-1. **Threats**: `05-agentic-safety/mcp-security-threats.md` - OWASP-style threat taxonomy
-2. **Patterns**: `05-agentic-safety/safe-mcp-patterns.md` - Secure MCP development
-3. **Practice**: `02-examples/05-mcp-security-audit.ipynb` - Audit an MCP server
-4. **Reference**: [spatial-mcp](https://github.com/lynnlangit/spatial-mcp) - Secure MCP implementation
-5. **HITL**: `05-agentic-safety/human-in-loop-agents.md` - Human oversight patterns
-6. **Logging**: `05-agentic-safety/audit-logging-agents.md` - Decision chain tracing
-
-**Time**: 10-14 hours | **Prerequisites**: Security fundamentals, agentic AI familiarity
-
----
-
-### Path 4: AI Compliance Officer (Regulatory Focus)
-
-**Goal**: Navigate EU AI Act, NIST, FDA regulations for AI systems
-
-1. **Risk Assessment**: `06-governance/risk-tiering-template.md` - Classify your AI system
-2. **EU AI Act**: `06-governance/eu-ai-act-checklist.md` - High-risk system requirements
-3. **NIST Framework**: `06-governance/nist-ai-600-1-summary.md` - GenAI risk management
-4. **Healthcare**: `04-healthcare/who-lmm-guidelines.md` - WHO LMM standards
-5. **Documentation**: `01-tools/03-model-cards/README.md` - Required transparency docs
-6. **Testing**: `01-tools/01-giskard/README.md` - Pre-deployment validation
-
-**Time**: 8-12 hours | **Prerequisites**: Regulatory/compliance background
-
----
-
-### Path 5: Advanced - Multi-Agent Ethics Patterns
-
-**Goal**: Design ethical multi-agent systems with complex tool interactions
-
-1. **Foundation**: Complete Path 3 (Agentic AI Security)
-2. **Multi-Agent**: `02-examples/06-agent-ethics-patterns.ipynb` - Multi-agent patterns
-3. **Tool Poisoning**: `05-agentic-safety/tool-poisoning-defense.md` - Supply chain security
-4. **Testing**: `04-healthcare/synthetic-patient-data.md` - Safe testing data generation
-5. **Project**: Build a multi-agent healthcare system with full compliance
-
-**Time**: 20+ hours | **Prerequisites**: All previous paths
-
----
-
-## 🛠️ Tool Comparison Matrix
-
-| Tool | Primary Use Case | Best For | Setup | Healthcare Support | Getting Started |
-|------|-----------------|----------|-------|-------------------|-----------------|
-| **Giskard** | LLM testing & vulnerability scanning | Quick safety audits, RAG evaluation, hallucination detection | ⭐⭐ Low | ✅ Excellent | [Guide](01-tools/01-giskard/README.md) |
-| **NeMo Guardrails** | Runtime safety controls | Production guardrails, input/output filtering, topic control | ⭐⭐⭐ Medium | ✅ Strong | [Guide](01-tools/02-nemo-guardrails/README.md) |
-| **Model Cards Toolkit** | Model documentation & transparency | Compliance documentation, model governance | ⭐ Very Low | ✅ Good | [Guide](01-tools/03-model-cards/README.md) |
-| **Llama Guard** | Content moderation | Toxicity filtering, safety classification | ⭐⭐ Low | ⚠️ Limited | [Guide](01-tools/04-llama-guard/README.md) |
-| **OpenAI Model Spec** | Behavioral guidelines | Defining intended model behavior | ⭐ Low | ⚠️ Limited | [Spec](https://openai.com/index/model-spec/) |
-| **Wallarm for LLMs** | Security & defense | Protecting agents from prompt injection/jailbreaks | ⭐⭐ Low | ✅ Good | [Tool](https://www.wallarm.com/) |
-
----
-
-## 🏛️ Global Governance & Compliance (2026 Update)
-
-By 2026, AI ethics has transitioned from voluntary principles to enforceable law.
-
-### EU AI Act (Full Enforcement August 2026)
-
-The definitive global benchmark for risk-based AI regulation. It categorizes systems into Unacceptable, High, Limited, and Minimal risk.
-
-- **Official**: [EU AI Act Compliance Tracker](https://artificialintelligenceact.eu/)
-- **Implementation Guide**: [06-governance/eu-ai-act-checklist.md](06-governance/eu-ai-act-checklist.md)
-- **Actionable for Devs**: Check the [GPAI Code of Practice](https://artificialintelligenceact.eu/high-level-summary/)
-
-### NIST AI 600-1: Generative AI Profile (2025)
-
-A specialized extension of the NIST Risk Management Framework (RMF). It provides 12 high-level risks, including "Confabulation" (Hallucination) and "CBRN" information access.
-
-- **Official**: [NIST AI RMF Resource Center](https://www.nist.gov/itl/ai-risk-management-framework)
-- **Summary**: [06-governance/nist-ai-600-1-summary.md](06-governance/nist-ai-600-1-summary.md)
-
----
-
-## 🤖 Agentic Safety & Security
-
-With the rise of the **Model Context Protocol (MCP)** and multi-agent systems, "ethics" now includes preventing autonomous loop failures and unauthorized tool use.
-
-### MCP Security Resources
-
-- **Threat Taxonomy**: [05-agentic-safety/mcp-security-threats.md](05-agentic-safety/mcp-security-threats.md) - OWASP-style threat model
-- **Secure Patterns**: [05-agentic-safety/safe-mcp-patterns.md](05-agentic-safety/safe-mcp-patterns.md) - OpenSSF guidelines
-- **Reference Implementation**: [spatial-mcp](https://github.com/lynnlangit/spatial-mcp) - Secure geospatial MCP server
-- **Security Audit**: [02-examples/05-mcp-security-audit.ipynb](02-examples/05-mcp-security-audit.ipynb)
-
-### Human-in-the-Loop Best Practices
-
-- **HITL Patterns**: [05-agentic-safety/human-in-loop-agents.md](05-agentic-safety/human-in-loop-agents.md)
-- **OECD AI Principles**: [2024/2025 Update](https://oecd.ai/en/dashboards/ai-principles/P7)
-
----
-
-## 🧬 Bio-Ethics & Precision Medicine
-
-For computational bioinformaticians and healthcare AI developers, ethical AI involves the safe orchestration of synthetic patient data and genomics.
-
-### WHO Guidance on Large Multi-Modal Models (LMMs) for Health (2025)
-
-New standards for transparency and accountability when using Generative AI for disease detection and treatment.
-
-- **Official**: [WHO Health AI Ethics Portal](https://www.who.int/news/item/18-01-2024-who-releases-guidance-on-ai-for-health)
-- **Summary**: [04-healthcare/who-lmm-guidelines.md](04-healthcare/who-lmm-guidelines.md)
-
-### Healthcare AI Resources
-
-- **Clinical Risks**: [04-healthcare/clinical-llm-risks.md](04-healthcare/clinical-llm-risks.md) - EHR integration, hallucinations
-- **HIPAA Compliance**: [04-healthcare/hipaa-ai-checklist.md](04-healthcare/hipaa-ai-checklist.md)
-- **Genomics Ethics**: [04-healthcare/genomics-ethics.md](04-healthcare/genomics-ethics.md) - AI in genetic analysis
-- **Synthetic Data**: [04-healthcare/synthetic-patient-data.md](04-healthcare/synthetic-patient-data.md)
-- **NIH Guidelines**: [NIH AI Guidelines](https://pmc.ncbi.nlm.nih.gov/articles/PMC12772196/)
+| Topic | Description | Link |
+|-------|-------------|------|
+| **🎓 Learning Paths** | Step-by-step guides for different roles (Beginner, Dev, Security, Compliance) | [Start Learning →](LEARNING_PATHS.md) |
+| **🧪 Tools** | Giskard, NeMo Guardrails, Wallarm, Model Cards setup | [View Tools →](01-tools/README.md) |
+| **🧬 Healthcare** | WHO guidelines, HIPAA, Genomics, Clinical Risks | [View Healthcare →](04-healthcare/README.md) |
+| **🤖 Agentic Safety** | MCP Security, Threats, HITL, Tool Poisoning | [View Agent Security →](05-agentic-safety/README.md) |
+| **🏛️ Governance** | EU AI Act, NIST, US Courts, State Laws | [View Governance →](06-governance/README.md) |
 
 ---
 
@@ -261,6 +128,7 @@ Before deploying your AI system:
 - [ ] **Safety Testing**: Run Giskard comprehensive scan (see [01-tools/01-giskard/](01-tools/01-giskard/))
 - [ ] **Guardrails**: Implement NeMo Guardrails for runtime safety (see [01-tools/02-nemo-guardrails/](01-tools/02-nemo-guardrails/))
 - [ ] **Compliance**: Review EU AI Act requirements if deploying in EU (see [06-governance/eu-ai-act-checklist.md](06-governance/eu-ai-act-checklist.md))
+- [ ] **Legal/Courts**: Check US Court AI Rules if building legal tech (see [06-governance/us-court-ai-justice.md](06-governance/us-court-ai-justice.md))
 - [ ] **Healthcare**: If clinical use, check HIPAA compliance (see [04-healthcare/hipaa-ai-checklist.md](04-healthcare/hipaa-ai-checklist.md))
 - [ ] **Agentic**: If using MCP, audit security (see [05-agentic-safety/mcp-security-threats.md](05-agentic-safety/mcp-security-threats.md))
 - [ ] **Human Oversight**: Implement HITL for high-risk actions (see [05-agentic-safety/human-in-loop-agents.md](05-agentic-safety/human-in-loop-agents.md))

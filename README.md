@@ -14,7 +14,7 @@
 This guide provides essential technical and regulatory updates for developers and AI practitioners building in the **Generative & Agentic Era (2024–2026)**.
 
 > [!IMPORTANT]
-> **New for February 2026**: The [2026 International AI Safety Report](https://www.gov.uk/government/publications/international-scientific-report-on-the-safety-of-advanced-ai-interim-report) highlights rapid advancements in AI capabilities and the rising threat of deepfakes.
+> **New for February 2026**: The [2026 International AI Safety Report](https://internationalaisafetyreport.org/publication/international-ai-safety-report-2026) highlights rapid advancements in AI capabilities and the rising threat of deepfakes.
 
 ## 📂 Repository Structure
 

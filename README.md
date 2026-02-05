@@ -151,9 +151,6 @@ Before deploying your AI system:
 - [OpenSSF Safe-MCP](https://github.com/openssf/safe-mcp) - MCP security
 - [Model Cards Toolkit](https://github.com/tensorflow/model-card-toolkit)
 
-### Related Projects
-- [spatial-mcp](https://github.com/lynnlangit/spatial-mcp) - Secure geospatial MCP server reference
-
 ---
 
 ## 📝 License

@@ -106,6 +106,10 @@ flowchart TD
         ClaudeR -- "stdio transport" --> FastMCPProxy
         FastMCPProxy -- "Server-Sent Events (SSE)<br>(HTTPS)" --> CloudServer
     end
+
+    %% Force Left-to-Right Side-by-Side Ordering
+    ClaudeL ~~~ ClaudeR
+    LocalServer ~~~ CloudServer
     
     %% Shared Server Logic
     subgraph Server_Internals["Shared Logic (server.py)"]
@@ -134,13 +138,13 @@ flowchart TD
     Cache -- "Load Content" --> Parser
     Parser --> Timestamp
     
-    %% Serving Results
-    Timestamp -- "Format Results<br>& Inject Metadata" --> LocalServer
-    Timestamp -- "Format Results<br>& Inject Metadata" --> CloudServer
+    %% Serving Results (Dotted lines prevent layout cycles pulling roots downwards)
+    Timestamp -. "Format Results<br>& Inject Metadata" .-> LocalServer
+    Timestamp -. "Format Results<br>& Inject Metadata" .-> CloudServer
     
-    CloudServer -- "Formatted Context<br>(SSE heartbeat maintained)" --> FastMCPProxy
-    FastMCPProxy -- "stdio responses" --> ClaudeR
-    LocalServer -- "stdio responses" --> ClaudeL
+    CloudServer -. "Formatted Context<br>(SSE heartbeat maintained)" .-> FastMCPProxy
+    FastMCPProxy -. "stdio responses" .-> ClaudeR
+    LocalServer -. "stdio responses" .-> ClaudeL
 
     %% Styling
     classDef client fill:#f9f,stroke:#333,stroke-width:2px;

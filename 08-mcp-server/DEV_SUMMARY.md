@@ -2,7 +2,7 @@
 
 This document records the phased development and debugging process for deploying the Model Context Protocol (MCP) server that connects the `learning-ethical-ai` repository to Claude Desktop.
 
-![Development Phases: Local, Remote Data, Fully Remote](dev_phases.jpg)
+<img src="dev_phases.jpg" alt="Development Phases: Local, Remote Data, Fully Remote" width="75%">
 
 ---
 

@@ -94,17 +94,23 @@ Our server operates on a stateless architecture, utilizing an in-memory cache an
 flowchart TD
     %% Define Nodes
     Claude["Claude Desktop<br>(or other MCP Client)"]
-    FastMCPProxy["FastMCP CLI Proxy<br>(uvx fastmcp run)"]
-    Server["Ethical AI MCP Server<br>(Cloud Run)"]
-    Cache[("In-Memory Cache<br>(5 min TTL)")]
-    GitHub["GitHub Raw Content<br>(raw.githubusercontent.com)"]
     
-    %% Client to Proxy Flow
-    Claude -- "Prompts, Tools, & Resources<br>(stdio transport)" --> FastMCPProxy
-    FastMCPProxy -- "Server-Sent Events (SSE)<br>(HTTPS)" --> Server
+    subgraph Local_Setup["💻 Local Execution"]
+        LocalServer["Local MCP Server<br>(uv run server.py)"]
+    end
     
-    %% Server Internal Logic
-    subgraph Server_Internals["Server Logic (server.py)"]
+    subgraph Remote_Setup["☁️ Remote Execution"]
+        FastMCPProxy["FastMCP CLI Proxy<br>(uvx fastmcp run)"]
+        CloudServer["Ethical AI MCP Server<br>(GCP Cloud Run)"]
+    end
+    
+    %% Client Routing
+    Claude -- "stdio transport" --> LocalServer
+    Claude -- "stdio transport" --> FastMCPProxy
+    FastMCPProxy -- "Server-Sent Events (SSE)<br>(HTTPS)" --> CloudServer
+    
+    %% Shared Server Logic
+    subgraph Server_Internals["Shared Logic (server.py)"]
         direction TB
         Router{"Is Cache Valid?<br>(TTL < 5 min)"}
         Fetchers["Async HTTPX Client<br>(asyncio.gather)"]
@@ -112,25 +118,31 @@ flowchart TD
         Timestamp["Central Time Formatter<br>(zoneinfo)"]
     end
     
-    Server --> Router
+    LocalServer --> Router
+    CloudServer --> Router
     
-    %% Cache Logic
+    %% Cache & External Storage
+    Cache[("In-Memory Cache<br>(5 min TTL)")]
+    GitHub["GitHub Raw Content<br>(raw.githubusercontent.com)"]
+    
+    %% Internal Logic Workflows
     Router -- "No (Expired)" --> Fetchers
     Router -- "Yes (Valid)" --> Parser
     
-    %% External Fetching
     Fetchers -- "Parallel HTTPS GET<br>(Non-blocking)" --> GitHub
     GitHub -- "Raw Markdown Strings" --> Cache
     Fetchers -. "Store & Stamp" .-> Cache
     
-    %% Serving Results
     Cache -- "Load Content" --> Parser
     Parser --> Timestamp
-    Timestamp -- "Format Results<br>& Inject Metadata" --> Server
     
-    %% Server to Client Flow
-    Server -- "Formatted Context<br>with Freshness Warning<br>(SSE heartbeat maintained)" --> FastMCPProxy
+    %% Serving Results
+    Timestamp -- "Format Results<br>& Inject Metadata" --> LocalServer
+    Timestamp -- "Format Results<br>& Inject Metadata" --> CloudServer
+    
+    CloudServer -- "Formatted Context<br>(SSE heartbeat maintained)" --> FastMCPProxy
     FastMCPProxy -- "stdio responses" --> Claude
+    LocalServer -- "stdio responses" --> Claude
 
     %% Styling
     classDef client fill:#f9f,stroke:#333,stroke-width:2px;
@@ -138,12 +150,14 @@ flowchart TD
     classDef external fill:#bfb,stroke:#333,stroke-width:2px;
     classDef cache fill:#fdd,stroke:#333,stroke-width:2px;
     classDef proxy fill:#fcf,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef subgraphFrame fill:none,stroke:#666,stroke-width:2px,stroke-dasharray: 5 5;
     
     class Claude client
     class FastMCPProxy proxy
-    class Server,Server_Internals server
+    class LocalServer,CloudServer,Server_Internals server
     class GitHub external
     class Cache cache
+    class Local_Setup,Remote_Setup subgraphFrame
 ```
 
 ## Features

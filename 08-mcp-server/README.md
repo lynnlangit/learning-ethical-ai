@@ -93,23 +93,23 @@ Our server operates on a stateless architecture, utilizing an in-memory cache an
 ```mermaid
 flowchart TD
     %% Define Nodes
-    Claude["Claude Desktop\n(or other MCP Client)"]
-    FastMCPProxy["FastMCP CLI Proxy\n(uvx fastmcp run)"]
-    Server["Ethical AI MCP Server\n(Cloud Run)"]
-    Cache[("In-Memory Cache\n(5 min TTL)")]
-    GitHub["GitHub Raw Content\n(raw.githubusercontent.com)"]
+    Claude["Claude Desktop<br>(or other MCP Client)"]
+    FastMCPProxy["FastMCP CLI Proxy<br>(uvx fastmcp run)"]
+    Server["Ethical AI MCP Server<br>(Cloud Run)"]
+    Cache[("In-Memory Cache<br>(5 min TTL)")]
+    GitHub["GitHub Raw Content<br>(raw.githubusercontent.com)"]
     
     %% Client to Proxy Flow
-    Claude -- "Prompts, Tools, & Resources\n(stdio transport)" --> FastMCPProxy
-    FastMCPProxy -- "Server-Sent Events (SSE)\n(HTTPS)" --> Server
+    Claude -- "Prompts, Tools, & Resources<br>(stdio transport)" --> FastMCPProxy
+    FastMCPProxy -- "Server-Sent Events (SSE)<br>(HTTPS)" --> Server
     
     %% Server Internal Logic
     subgraph Server_Internals["Server Logic (server.py)"]
         direction TB
-        Router{"Is Cache Valid?\n(TTL < 5 min)"}
-        Fetchers["Async HTTPX Client\n(asyncio.gather)"]
-        Parser["Content Parser & Searcher\n(2000 char snippets)"]
-        Timestamp["Central Time Formatter\n(zoneinfo)"]
+        Router{"Is Cache Valid?<br>(TTL < 5 min)"}
+        Fetchers["Async HTTPX Client<br>(asyncio.gather)"]
+        Parser["Content Parser & Searcher<br>(2000 char snippets)"]
+        Timestamp["Central Time Formatter<br>(zoneinfo)"]
     end
     
     Server --> Router
@@ -119,17 +119,17 @@ flowchart TD
     Router -- "Yes (Valid)" --> Parser
     
     %% External Fetching
-    Fetchers -- "Parallel HTTPS GET\n(Non-blocking)" --> GitHub
+    Fetchers -- "Parallel HTTPS GET<br>(Non-blocking)" --> GitHub
     GitHub -- "Raw Markdown Strings" --> Cache
     Fetchers -. "Store & Stamp" .-> Cache
     
     %% Serving Results
     Cache -- "Load Content" --> Parser
     Parser --> Timestamp
-    Timestamp -- "Format Results\n& Inject Metadata" --> Server
+    Timestamp -- "Format Results<br>& Inject Metadata" --> Server
     
     %% Server to Client Flow
-    Server -- "Formatted Context\nwith Freshness Warning\n(SSE heartbeat maintained)" --> FastMCPProxy
+    Server -- "Formatted Context<br>with Freshness Warning<br>(SSE heartbeat maintained)" --> FastMCPProxy
     FastMCPProxy -- "stdio responses" --> Claude
 
     %% Styling

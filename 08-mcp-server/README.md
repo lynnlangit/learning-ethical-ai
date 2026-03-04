@@ -92,22 +92,20 @@ Our server operates on a stateless architecture, utilizing an in-memory cache an
 
 ```mermaid
 flowchart TD
-    %% Define Nodes
-    Claude["Claude Desktop<br>(or other MCP Client)"]
-    
+    %% Client Setups
     subgraph Local_Setup["💻 Local Execution"]
+        ClaudeL["Claude Desktop<br>(Local Client)"]
         LocalServer["Local MCP Server<br>(uv run server.py)"]
+        ClaudeL -- "stdio transport" --> LocalServer
     end
     
     subgraph Remote_Setup["☁️ Remote Execution"]
+        ClaudeR["Claude Desktop<br>(Remote Client)"]
         FastMCPProxy["FastMCP CLI Proxy<br>(uvx fastmcp run)"]
         CloudServer["Ethical AI MCP Server<br>(GCP Cloud Run)"]
+        ClaudeR -- "stdio transport" --> FastMCPProxy
+        FastMCPProxy -- "Server-Sent Events (SSE)<br>(HTTPS)" --> CloudServer
     end
-    
-    %% Client Routing
-    Claude -- "stdio transport" --> LocalServer
-    Claude -- "stdio transport" --> FastMCPProxy
-    FastMCPProxy -- "Server-Sent Events (SSE)<br>(HTTPS)" --> CloudServer
     
     %% Shared Server Logic
     subgraph Server_Internals["Shared Logic (server.py)"]
@@ -141,8 +139,8 @@ flowchart TD
     Timestamp -- "Format Results<br>& Inject Metadata" --> CloudServer
     
     CloudServer -- "Formatted Context<br>(SSE heartbeat maintained)" --> FastMCPProxy
-    FastMCPProxy -- "stdio responses" --> Claude
-    LocalServer -- "stdio responses" --> Claude
+    FastMCPProxy -- "stdio responses" --> ClaudeR
+    LocalServer -- "stdio responses" --> ClaudeL
 
     %% Styling
     classDef client fill:#f9f,stroke:#333,stroke-width:2px;

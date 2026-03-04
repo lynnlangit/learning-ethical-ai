@@ -2,10 +2,7 @@
 
 This document records the phased development and debugging process for deploying the Model Context Protocol (MCP) server that connects the `learning-ethical-ai` repository to Claude Desktop.
 
-## Architecture Overview
-*   **Data Source:** GitHub Repository Markdown Files
-*   **Server Framework:** [FastMCP](https://jlowin.github.io/fastmcp/) (Python)
-*   **Client:** Claude Desktop
+![Development Phases: Local, Remote Data, Fully Remote](dev_phases.jpg)
 
 ---
 

@@ -9,6 +9,8 @@
 
 import os
 import time
+from contextlib import asynccontextmanager
+from dataclasses import dataclass, field
 from datetime import datetime
 from zoneinfo import ZoneInfo
 import logging
@@ -17,22 +19,12 @@ import sys
 import httpx
 import asyncio
 
-from fastmcp import FastMCP
+from typing import Annotated, Dict, Optional, Tuple, Any
+from fastmcp import FastMCP, Context
 from pydantic import Field
 
 logging.basicConfig(level=logging.INFO, stream=sys.stderr)
 logger = logging.getLogger("ethical-ai-mcp")
-
-# Initialize FastMCP Server
-mcp = FastMCP("Ethical AI Server")
-
-def _get_central_time_str(timestamp=None):
-    """Converts a UNIX epoch timestamp to a US Central Time string."""
-    if timestamp is None or timestamp == 0:
-        return "Not yet cached"
-    
-    dt = datetime.fromtimestamp(timestamp, tz=ZoneInfo("America/Chicago"))
-    return dt.strftime("%Y-%m-%d %H:%M:%S %Z")
 
 # Remote GitHub Data Source
 GITHUB_RAW_BASE = "https://raw.githubusercontent.com/lynnlangit/learning-ethical-ai/refs/heads/main/"
@@ -63,12 +55,35 @@ REMOTE_FILES = [
     "06-governance/risk-tiering-template.md"
 ]
 
-from typing import Annotated, Dict, Optional, Tuple, Any
-
-# Cache setup
-CACHE: Dict[str, Dict[str, Any]] = {}  # Format: {rel_path: {"mtime": float, "content": str}}
 CACHE_TTL = 300  # 5 minutes
-LAST_CACHE_CHECK = 0
+
+
+@dataclass
+class CacheState:
+    """Server-scoped document cache, managed via FastMCP lifespan."""
+    docs: Dict[str, Dict[str, Any]] = field(default_factory=dict)
+    last_check: float = 0.0
+
+
+@asynccontextmanager
+async def lifespan(server: FastMCP):
+    """Initialize server-scoped cache state on startup and clean up on shutdown."""
+    logger.info("Server starting — initializing cache state.")
+    yield CacheState()
+    logger.info("Server shutting down.")
+
+
+# Initialize FastMCP Server with lifespan for state management
+mcp = FastMCP("Ethical AI Server", lifespan=lifespan)
+
+
+def _get_central_time_str(timestamp: float = 0) -> str:
+    """Converts a UNIX epoch timestamp to a US Central Time string."""
+    if timestamp == 0:
+        return "Not yet cached"
+    dt = datetime.fromtimestamp(timestamp, tz=ZoneInfo("America/Chicago"))
+    return dt.strftime("%Y-%m-%d %H:%M:%S %Z")
+
 
 async def fetch_url(client: httpx.AsyncClient, rel_path: str) -> Tuple[str, Optional[str]]:
     url = GITHUB_RAW_BASE + rel_path
@@ -80,85 +95,82 @@ async def fetch_url(client: httpx.AsyncClient, rel_path: str) -> Tuple[str, Opti
         logger.error(f"Failed to fetch {url}: {e}")
         return rel_path, None
 
-async def _get_or_refresh_documents() -> Dict[str, str]:
-    """Returns a dict of {rel_path: content} fetching from github if TTL expired."""
-    global LAST_CACHE_CHECK
-    
+
+async def _get_or_refresh_documents(state: CacheState) -> Dict[str, str]:
+    """Returns a dict of {rel_path: content}, fetching from GitHub if TTL expired."""
     current_time = time.time()
     # Cache hit
-    if current_time - LAST_CACHE_CHECK < CACHE_TTL and CACHE:
-        return {k: v["content"] for k, v in CACHE.items()}
-        
+    if current_time - state.last_check < CACHE_TTL and state.docs:
+        return {k: v["content"] for k, v in state.docs.items()}
+
     logger.info("Cache expired or empty. Fetching from GitHub asynchronously...")
-    # Cache miss or expired: fetch all from raw.githubusercontent.com in parallel
-    async with httpx.AsyncClient(headers={'User-Agent': 'Ethical-AI-MCP-Server/1.0'}) as client:
+    async with httpx.AsyncClient(headers={"User-Agent": "Ethical-AI-MCP-Server/1.0"}) as client:
         tasks = [fetch_url(client, path) for path in REMOTE_FILES]
         results = await asyncio.gather(*tasks)
-        
         for rel_path, content in results:
             if content is not None:
-                CACHE[rel_path] = {
-                    "mtime": current_time,
-                    "content": content
-                }
+                state.docs[rel_path] = {"mtime": current_time, "content": content}
 
-    LAST_CACHE_CHECK = current_time
-    return {k: v["content"] for k, v in CACHE.items()}
+    state.last_check = current_time
+    return {k: v["content"] for k, v in state.docs.items()}
+
 
 # 1. Resources
 @mcp.resource("ethical-ai://governance/eu-ai-act")
-async def get_eu_ai_act() -> str:
+async def get_eu_ai_act(ctx: Context) -> str:
     """The 2026 EU AI Act compliance checklist for high-risk systems."""
-    docs = await _get_or_refresh_documents()
+    docs = await _get_or_refresh_documents(ctx.state)
     return docs.get("06-governance/eu-ai-act-checklist.md", "File not found.")
 
 @mcp.resource("ethical-ai://healthcare/hipaa-checklist")
-async def get_hipaa_checklist() -> str:
+async def get_hipaa_checklist(ctx: Context) -> str:
     """HIPAA compliance requirements for Healthcare AI integrations."""
-    docs = await _get_or_refresh_documents()
+    docs = await _get_or_refresh_documents(ctx.state)
     return docs.get("04-healthcare/hipaa-ai-checklist.md", "File not found.")
 
 @mcp.resource("ethical-ai://agentic-safety/mcp-threats")
-async def get_mcp_threats() -> str:
+async def get_mcp_threats(ctx: Context) -> str:
     """OWASP-style taxonomy of MCP and Agentic Security Threats."""
-    docs = await _get_or_refresh_documents()
+    docs = await _get_or_refresh_documents(ctx.state)
     return docs.get("05-agentic-safety/mcp-security-threats.md", "File not found.")
 
 @mcp.resource("ethical-ai://tools/nemo-guardrails")
-async def get_nemo_guardrails() -> str:
+async def get_nemo_guardrails(ctx: Context) -> str:
     """NVIDIA NeMo Guardrails configuration and setup for runtime AI safety."""
-    docs = await _get_or_refresh_documents()
+    docs = await _get_or_refresh_documents(ctx.state)
     return docs.get("01-tools/02-nemo-guardrails/README.md", "File not found.")
+
 
 # 2. Tools
 @mcp.tool()
 async def search_guidelines(
-    query: Annotated[str, Field(min_length=1, max_length=200, description="The keyword or concept to search for (e.g., 'synthetic data', 'poisoning').")]
+    query: Annotated[str, Field(min_length=1, max_length=200, description="The keyword or concept to search for (e.g., 'synthetic data', 'poisoning').")],
+    ctx: Context,
 ) -> str:
     """Searches across all markdown documents in the repository for specific concepts."""
     logger.info(f"Executing search_guidelines tool for query: '{query}'")
     results = []
-    
-    docs = await _get_or_refresh_documents()
+
+    docs = await _get_or_refresh_documents(ctx.state)
     for rel_path, content in docs.items():
         content_str = str(content)
-        if not rel_path.endswith('.md'):
+        if not rel_path.endswith(".md"):
             continue
         if query.lower() in content_str.lower():
             idx = content_str.lower().find(query.lower())
             start = max(0, idx - 1000)
             end = min(len(content_str), idx + 1000)
-            snippet = content_str[start:end].replace('\n', ' ')
+            snippet = content_str[start:end].replace("\n", " ")
             results.append(f"Match found in {rel_path}:\n...{snippet}...\n")
-            
+
     if not results:
         return f"No results found for '{query}'."
-        
-    meta = f"--- SERVER METADATA ---\nCache last refreshed: {_get_central_time_str(LAST_CACHE_CHECK)}\n-----------------------\n\n"
+
+    meta = f"--- SERVER METADATA ---\nCache last refreshed: {_get_central_time_str(ctx.state.last_check)}\n-----------------------\n\n"
     return meta + "\n".join(results[:5])  # Limit to top 5 results
 
 @mcp.tool()
-async def get_learning_path(role: str) -> str:
+async def get_learning_path(role: str, ctx: Context) -> str:
     """Gets the specific learning path from LEARNING_PATHS.md based on the user's role.
 
     Args:
@@ -166,7 +178,7 @@ async def get_learning_path(role: str) -> str:
               Partial matches are supported (e.g. 'security' matches the Agentic Security path).
     """
     try:
-        docs = await _get_or_refresh_documents()
+        docs = await _get_or_refresh_documents(ctx.state)
         content = docs.get("LEARNING_PATHS.md", "")
         if not content:
             return "LEARNING_PATHS.md not found in remote cache."
@@ -201,18 +213,18 @@ async def get_learning_path(role: str) -> str:
 
 @mcp.tool()
 async def get_tool_configuration(
-    tool_name: Annotated[str, Field(min_length=1, max_length=100, description="The name of the tool (e.g., 'giskard', 'nemo-guardrails').")]
+    tool_name: Annotated[str, Field(min_length=1, max_length=100, description="The name of the tool (e.g., 'giskard', 'nemo-guardrails').")],
+    ctx: Context,
 ) -> str:
     """Fetches configuration content for specific tools like giskard or nemo-guardrails."""
-    docs = await _get_or_refresh_documents()
+    docs = await _get_or_refresh_documents(ctx.state)
     files_content = []
-    # Find all cached files that are within the tools directory matching the tool_name
     target_path = f"01-tools/{tool_name.lower()}"
-    
+
     for rel_path, content in docs.items():
         if target_path in rel_path.lower():
             files_content.append(f"--- {rel_path} ---\n{content}\n")
-            
+
     if files_content:
         return "\n".join(files_content)
     return f"Configuration for tool '{tool_name}' not found attached to GitHub cache."
@@ -222,14 +234,16 @@ def ping() -> str:
     """A fast diagnostic tool to verify the remote MCP server connection."""
     return "Pong! Clean connection received."
 
+
 # 3. Prompts
 @mcp.prompt()
-async def audit_agent_security() -> str:
+async def audit_agent_security(ctx: Context) -> str:
     """A prompt to automatically review code against Agentic Safety guidelines."""
-    threats = await get_mcp_threats()
+    docs = await _get_or_refresh_documents(ctx.state)
+    threats = docs.get("05-agentic-safety/mcp-security-threats.md", "File not found.")
     return f"""You are an AI Safety Auditor. Review the user's currently open files against the following Agentic Safety guidelines and highlight any vulnerabilities.
 
-[Context Date Warning: The MCP Server last synced the attached guidelines with the local repository on {_get_central_time_str(LAST_CACHE_CHECK)}. Please refer to this date if the user asks about the freshness of your review.]
+[Context Date Warning: The MCP Server last synced the attached guidelines with the local repository on {_get_central_time_str(ctx.state.last_check)}. Please refer to this date if the user asks about the freshness of your review.]
 
 Context (MCP Security Threats):
 {threats}
@@ -237,22 +251,24 @@ Context (MCP Security Threats):
 Please conduct a thorough review."""
 
 @mcp.prompt()
-async def review_healthcare_compliance() -> str:
+async def review_healthcare_compliance(ctx: Context) -> str:
     """A prompt to automatically review a data-handling pipeline against HIPAA guidelines."""
-    hipaa = await get_hipaa_checklist()
+    docs = await _get_or_refresh_documents(ctx.state)
+    hipaa = docs.get("04-healthcare/hipaa-ai-checklist.md", "File not found.")
     return f"""You are a Healthcare AI Compliance Officer. Please review the user's code and architecture against the following HIPAA guidelines.
 
-[Context Date Warning: The MCP Server last synced the attached HIPAA Guidelines with the local repository on {_get_central_time_str(LAST_CACHE_CHECK)}. Please refer to this date if the user asks about the freshness of your review.]
+[Context Date Warning: The MCP Server last synced the attached HIPAA Guidelines with the local repository on {_get_central_time_str(ctx.state.last_check)}. Please refer to this date if the user asks about the freshness of your review.]
 
 Context (HIPAA Checklist):
 {hipaa}
 
 Identify any PHI handling risks or missing safeguards."""
 
+
 def main() -> None:
     """Run the ethical-ai server."""
     port = os.environ.get("PORT")
-    
+
     if port:
         # Run the server with Streamable HTTP transport for GCP Cloud Run (SSE is deprecated in FastMCP 2.x)
         mcp.run(transport="http", port=int(port), host="0.0.0.0")

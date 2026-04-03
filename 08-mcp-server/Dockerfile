@@ -11,4 +11,4 @@ RUN pip install uv "fastmcp==2.13.0" mcp httpx
 COPY server.py .
 
 # Run the server directly using python
-CMD ["uv", "run", "python", "server.py"]
+CMD ["python", "server.py"]

@@ -161,14 +161,41 @@ async def search_guidelines(query: str) -> str:
 @mcp.tool()
 async def get_learning_path(role: str) -> str:
     """Gets the specific learning path from LEARNING_PATHS.md based on the user's role.
-    
+
     Args:
-        role: A role like 'Beginner', 'Dev', 'Security', or 'Compliance'.
+        role: A role keyword such as 'Beginner', 'Healthcare', 'Security', 'Compliance', or 'Advanced'.
+              Partial matches are supported (e.g. 'security' matches the Agentic Security path).
     """
     try:
         docs = await _get_or_refresh_documents()
-        content = docs.get("LEARNING_PATHS.md", "LEARNING_PATHS.md not found in remote cache.")
-        return f"Content of LEARNING_PATHS.md (Review this for {role}):\n\n{content}"
+        content = docs.get("LEARNING_PATHS.md", "")
+        if not content:
+            return "LEARNING_PATHS.md not found in remote cache."
+
+        # Split into sections on ## Path headers, keeping the header with each section
+        sections = []
+        current = []
+        for line in content.splitlines(keepends=True):
+            if line.startswith("## Path") and current:
+                sections.append("".join(current))
+                current = [line]
+            else:
+                current.append(line)
+        if current:
+            sections.append("".join(current))
+
+        role_lower = role.lower()
+        matched = [s for s in sections if role_lower in s.lower()]
+
+        if matched:
+            return f"Learning path(s) matching '{role}':\n\n" + "\n---\n".join(matched)
+
+        # No match — list available paths by their first line
+        titles = [s.splitlines()[0].strip() for s in sections if s.startswith("## Path")]
+        return (
+            f"No learning path found for role '{role}'.\n\n"
+            f"Available paths:\n" + "\n".join(f"- {t}" for t in titles)
+        )
     except Exception as e:
         logger.error(f"Error in get_learning_path: {e}")
         return f"Failed to load LEARNING_PATHS.md: {e}"

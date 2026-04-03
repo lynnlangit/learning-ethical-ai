@@ -119,25 +119,25 @@ async def _get_or_refresh_documents(state: CacheState) -> Dict[str, str]:
 @mcp.resource("ethical-ai://governance/eu-ai-act")
 async def get_eu_ai_act(ctx: Context) -> str:
     """The 2026 EU AI Act compliance checklist for high-risk systems."""
-    docs = await _get_or_refresh_documents(ctx.state)
+    docs = await _get_or_refresh_documents(ctx.lifespan_context)
     return docs.get("06-governance/eu-ai-act-checklist.md", "File not found.")
 
 @mcp.resource("ethical-ai://healthcare/hipaa-checklist")
 async def get_hipaa_checklist(ctx: Context) -> str:
     """HIPAA compliance requirements for Healthcare AI integrations."""
-    docs = await _get_or_refresh_documents(ctx.state)
+    docs = await _get_or_refresh_documents(ctx.lifespan_context)
     return docs.get("04-healthcare/hipaa-ai-checklist.md", "File not found.")
 
 @mcp.resource("ethical-ai://agentic-safety/mcp-threats")
 async def get_mcp_threats(ctx: Context) -> str:
     """OWASP-style taxonomy of MCP and Agentic Security Threats."""
-    docs = await _get_or_refresh_documents(ctx.state)
+    docs = await _get_or_refresh_documents(ctx.lifespan_context)
     return docs.get("05-agentic-safety/mcp-security-threats.md", "File not found.")
 
 @mcp.resource("ethical-ai://tools/nemo-guardrails")
 async def get_nemo_guardrails(ctx: Context) -> str:
     """NVIDIA NeMo Guardrails configuration and setup for runtime AI safety."""
-    docs = await _get_or_refresh_documents(ctx.state)
+    docs = await _get_or_refresh_documents(ctx.lifespan_context)
     return docs.get("01-tools/02-nemo-guardrails/README.md", "File not found.")
 
 
@@ -151,7 +151,7 @@ async def search_guidelines(
     logger.info(f"Executing search_guidelines tool for query: '{query}'")
     results = []
 
-    docs = await _get_or_refresh_documents(ctx.state)
+    docs = await _get_or_refresh_documents(ctx.lifespan_context)
     for rel_path, content in docs.items():
         content_str = str(content)
         if not rel_path.endswith(".md"):
@@ -166,7 +166,7 @@ async def search_guidelines(
     if not results:
         return f"No results found for '{query}'."
 
-    meta = f"--- SERVER METADATA ---\nCache last refreshed: {_get_central_time_str(ctx.state.last_check)}\n-----------------------\n\n"
+    meta = f"--- SERVER METADATA ---\nCache last refreshed: {_get_central_time_str(ctx.lifespan_context.last_check)}\n-----------------------\n\n"
     return meta + "\n".join(results[:5])  # Limit to top 5 results
 
 @mcp.tool()
@@ -178,7 +178,7 @@ async def get_learning_path(role: str, ctx: Context) -> str:
               Partial matches are supported (e.g. 'security' matches the Agentic Security path).
     """
     try:
-        docs = await _get_or_refresh_documents(ctx.state)
+        docs = await _get_or_refresh_documents(ctx.lifespan_context)
         content = docs.get("LEARNING_PATHS.md", "")
         if not content:
             return "LEARNING_PATHS.md not found in remote cache."
@@ -217,7 +217,7 @@ async def get_tool_configuration(
     ctx: Context,
 ) -> str:
     """Fetches configuration content for specific tools like giskard or nemo-guardrails."""
-    docs = await _get_or_refresh_documents(ctx.state)
+    docs = await _get_or_refresh_documents(ctx.lifespan_context)
     files_content = []
     target_path = f"01-tools/{tool_name.lower()}"
 
@@ -239,11 +239,11 @@ def ping() -> str:
 @mcp.prompt()
 async def audit_agent_security(ctx: Context) -> str:
     """A prompt to automatically review code against Agentic Safety guidelines."""
-    docs = await _get_or_refresh_documents(ctx.state)
+    docs = await _get_or_refresh_documents(ctx.lifespan_context)
     threats = docs.get("05-agentic-safety/mcp-security-threats.md", "File not found.")
     return f"""You are an AI Safety Auditor. Review the user's currently open files against the following Agentic Safety guidelines and highlight any vulnerabilities.
 
-[Context Date Warning: The MCP Server last synced the attached guidelines with the local repository on {_get_central_time_str(ctx.state.last_check)}. Please refer to this date if the user asks about the freshness of your review.]
+[Context Date Warning: The MCP Server last synced the attached guidelines with the local repository on {_get_central_time_str(ctx.lifespan_context.last_check)}. Please refer to this date if the user asks about the freshness of your review.]
 
 Context (MCP Security Threats):
 {threats}
@@ -253,11 +253,11 @@ Please conduct a thorough review."""
 @mcp.prompt()
 async def review_healthcare_compliance(ctx: Context) -> str:
     """A prompt to automatically review a data-handling pipeline against HIPAA guidelines."""
-    docs = await _get_or_refresh_documents(ctx.state)
+    docs = await _get_or_refresh_documents(ctx.lifespan_context)
     hipaa = docs.get("04-healthcare/hipaa-ai-checklist.md", "File not found.")
     return f"""You are a Healthcare AI Compliance Officer. Please review the user's code and architecture against the following HIPAA guidelines.
 
-[Context Date Warning: The MCP Server last synced the attached HIPAA Guidelines with the local repository on {_get_central_time_str(ctx.state.last_check)}. Please refer to this date if the user asks about the freshness of your review.]
+[Context Date Warning: The MCP Server last synced the attached HIPAA Guidelines with the local repository on {_get_central_time_str(ctx.lifespan_context.last_check)}. Please refer to this date if the user asks about the freshness of your review.]
 
 Context (HIPAA Checklist):
 {hipaa}

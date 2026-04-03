@@ -1,9 +1,9 @@
 # /// script
 # requires-python = ">=3.11"
 # dependencies = [
+#     "fastmcp==2.13.0",
+#     "httpx",
 #     "mcp",
-#     "uvicorn",
-#     "starlette"
 # ]
 # ///
 

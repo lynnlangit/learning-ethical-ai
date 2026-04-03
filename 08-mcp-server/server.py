@@ -155,7 +155,7 @@ async def search_guidelines(query: str) -> str:
     if not results:
         return f"No results found for '{query}'."
         
-    meta = f"--- SERVER METADATA ---\nSearch executed against remote GitHub guidelines cache last refreshed: {_get_central_time_str(LAST_CACHE_CHECK)}\n[IMPORTANT: You must mention this exact cache refresh date to the user in your final response so they know the data freshness.]\n-----------------------\n\n"
+    meta = f"--- SERVER METADATA ---\nCache last refreshed: {_get_central_time_str(LAST_CACHE_CHECK)}\n-----------------------\n\n"
     return meta + "\n".join(results[:5])  # Limit to top 5 results
 
 @mcp.tool()

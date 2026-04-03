@@ -18,6 +18,7 @@ import httpx
 import asyncio
 
 from fastmcp import FastMCP
+from pydantic import Field
 
 logging.basicConfig(level=logging.INFO, stream=sys.stderr)
 logger = logging.getLogger("ethical-ai-mcp")
@@ -62,7 +63,7 @@ REMOTE_FILES = [
     "06-governance/risk-tiering-template.md"
 ]
 
-from typing import Dict, Optional, Tuple, Any
+from typing import Annotated, Dict, Optional, Tuple, Any
 
 # Cache setup
 CACHE: Dict[str, Dict[str, Any]] = {}  # Format: {rel_path: {"mtime": float, "content": str}}
@@ -131,12 +132,10 @@ async def get_nemo_guardrails() -> str:
 
 # 2. Tools
 @mcp.tool()
-async def search_guidelines(query: str) -> str:
-    """Searches across all markdown documents in the repository for specific concepts.
-    
-    Args:
-        query: The keyword or concept to search for (e.g., 'synthetic data', 'poisoning').
-    """
+async def search_guidelines(
+    query: Annotated[str, Field(min_length=1, max_length=200, description="The keyword or concept to search for (e.g., 'synthetic data', 'poisoning').")]
+) -> str:
+    """Searches across all markdown documents in the repository for specific concepts."""
     logger.info(f"Executing search_guidelines tool for query: '{query}'")
     results = []
     
@@ -201,12 +200,10 @@ async def get_learning_path(role: str) -> str:
         return f"Failed to load LEARNING_PATHS.md: {e}"
 
 @mcp.tool()
-async def get_tool_configuration(tool_name: str) -> str:
-    """Fetches configuration content for specific tools like giskard or nemo-guardrails.
-    
-    Args:
-        tool_name: The name of the tool (e.g., 'giskard').
-    """
+async def get_tool_configuration(
+    tool_name: Annotated[str, Field(min_length=1, max_length=100, description="The name of the tool (e.g., 'giskard', 'nemo-guardrails').")]
+) -> str:
+    """Fetches configuration content for specific tools like giskard or nemo-guardrails."""
     docs = await _get_or_refresh_documents()
     files_content = []
     # Find all cached files that are within the tools directory matching the tool_name
@@ -257,8 +254,8 @@ def main() -> None:
     port = os.environ.get("PORT")
     
     if port:
-        # Run the server with appropriate transport for GCP Cloud Run
-        mcp.run(transport="sse", port=int(port), host="0.0.0.0")
+        # Run the server with Streamable HTTP transport for GCP Cloud Run (SSE is deprecated in FastMCP 2.x)
+        mcp.run(transport="http", port=int(port), host="0.0.0.0")
     else:
         # Default local terminal transport
         mcp.run(transport="stdio")
